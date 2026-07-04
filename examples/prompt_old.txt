@@ -1,0 +1,5 @@
+Classify the sentiment of the following text as exactly one word: "positive" or "negative".
+
+Text: {input}
+
+Answer with only the single word.

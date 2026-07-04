@@ -1,0 +1,12 @@
+{"input":"I love this, best thing I bought all year","expected":"positive","output_old":"positive","output_new":"positive"}
+{"input":"This is terrible and broke immediately","expected":"negative","output_old":"negative","output_new":"negative"}
+{"input":"Best purchase ever, so happy","expected":"positive","output_old":"positive","output_new":"positive"}
+{"input":"Complete waste of money","expected":"negative","output_old":"negative","output_new":"negative"}
+{"input":"Absolutely fantastic experience","expected":"positive","output_old":"positive","output_new":"positive"}
+{"input":"I hate it, would not recommend","expected":"negative","output_old":"negative","output_new":"negative"}
+{"input":"Highly recommend to everyone","expected":"positive","output_old":"positive","output_new":"positive"}
+{"input":"Stopped working after one day","expected":"negative","output_old":"negative","output_new":"negative"}
+{"input":"So happy with this purchase","expected":"positive","output_old":"positive","output_new":"positive"}
+{"input":"Very disappointed with the quality","expected":"negative","output_old":"negative","output_new":"negative"}
+{"input":"Works great, exactly as described","expected":"positive","output_old":"positive","output_new":"positive"}
+{"input":"Not worth it at all","expected":"negative","output_old":"negative","output_new":"negative"}

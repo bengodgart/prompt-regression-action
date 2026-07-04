@@ -1,0 +1,47 @@
+name: "Prompt Regression Check"
+description: "Fail a pull request when a prompt change is a statistically significant regression on your examples."
+branding:
+  icon: "trending-down"
+  color: "purple"
+inputs:
+  examples:
+    description: "Path to the JSONL examples file (input, expected, output_old, output_new)."
+    required: true
+  scorer:
+    description: "Scorer: exact | contains | regex."
+    required: false
+    default: "exact"
+  runner:
+    description: "Runner: precomputed | anthropic."
+    required: false
+    default: "precomputed"
+  allow-drop:
+    description: "Tolerated mean score drop (0..1) before failing."
+    required: false
+    default: "0.0"
+  old:
+    description: "Old prompt template file (anthropic runner only)."
+    required: false
+    default: ""
+  new:
+    description: "New prompt template file (anthropic runner only)."
+    required: false
+    default: ""
+runs:
+  using: "composite"
+  steps:
+    # Runs from the consumer's workspace so the examples path resolves there.
+    # PYTHONPATH points at the action checkout so `python -m promptreg` imports.
+    - name: Run prompt regression check
+      shell: bash
+      env:
+        PYTHONPATH: ${{ github.action_path }}
+      run: |
+        python -m promptreg run \
+          --examples "${{ inputs.examples }}" \
+          --scorer "${{ inputs.scorer }}" \
+          --runner "${{ inputs.runner }}" \
+          --allow-drop "${{ inputs.allow-drop }}" \
+          ${{ inputs.old && format('--old {0}', inputs.old) || '' }} \
+          ${{ inputs.new && format('--new {0}', inputs.new) || '' }} \
+          --md "${GITHUB_STEP_SUMMARY:-/dev/null}"

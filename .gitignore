@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+env/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Local reports
+/report.md
+*.local.md
+
+# Private go-to-market assets (not part of the public tool)
+/posts/
+/publish-guide.html
