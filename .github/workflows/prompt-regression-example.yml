@@ -1,0 +1,28 @@
+# Example workflow you would copy into your own repo. It runs the prompt
+# regression check on pull requests that touch prompts or examples.
+#
+# In your repo, replace `./` with `bengodgart/prompt-regression-action@v1`.
+name: Prompt regression (example)
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "examples/**"
+      - "prompts/**"
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Prompt regression check
+        uses: ./
+        with:
+          examples: examples/examples.jsonl
+          scorer: exact
+          allow-drop: "0.0"
+      # To watch it FAIL a PR, point `examples` at examples/examples-regression.jsonl
